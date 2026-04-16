@@ -1,10 +1,10 @@
 import RPi.GPIO as GPIO
-inport time
+import time
 
-leds = [24,22,23,27,17,25,5,16]
+dac_bits = [16,20,21,25,26,17,27,22]
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(leds, GPIO.OUT)
+GPIO.setup(dac_bits, GPIO.OUT)
 
 dynamic_range = 3.3
 
@@ -20,7 +20,7 @@ def number_to_dac (number):
     a = [int(i) for i in bin(number)[2:].zfill(8)]
     print (a)
     for i in range (len (a)):
-        GPIO.OUTPUT (dac_bits [i], a[i])
+        GPIO.output (dac_bits [i], a[i])
 
 
 
